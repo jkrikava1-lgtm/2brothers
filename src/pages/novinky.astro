@@ -63,16 +63,26 @@ function formatDate(dateStr: string) {
 
   <section class="py-16 lg:py-24">
     <div class="max-w-3xl mx-auto px-4">
-      <div class="space-y-6">
-        {novinky.map((item) => (
-          <article class="rounded-2xl bg-cream-100 border border-warm-200/60 overflow-hidden shadow-sm">
+      <div class="space-y-8">
+        {novinky.map((item, i) => (
+          <article class:list={[
+            'rounded-3xl border overflow-hidden transition-all hover:scale-[1.01]',
+            i % 3 === 0 && 'bg-pink-500/5 border-pink-500/20 hover:shadow-[0_0_30px_rgba(255,26,126,0.1)]',
+            i % 3 === 1 && 'bg-cyan-400/5 border-cyan-400/20 hover:shadow-[0_0_30px_rgba(0,229,223,0.1)]',
+            i % 3 === 2 && 'bg-purple-400/5 border-purple-400/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.1)]',
+          ]}>
             {item.image && (
-              <img src={item.image} alt={item.title} class="w-full max-h-96 object-contain bg-cream-200" loading="lazy" />
+              <img src={item.image} alt={item.title} class="w-full max-h-96 object-contain bg-night-900" loading="lazy" />
             )}
             <div class="p-6 lg:p-8">
-              <time class="text-sm text-accent-700 font-medium">{formatDate(item.date)}</time>
-              <h2 class="text-xl font-display font-700 mt-2 mb-3">{item.title}</h2>
-              <p class="text-warm-600 leading-relaxed">{item.description}</p>
+              <time class:list={[
+                'text-sm font-bold',
+                i % 3 === 0 && 'text-pink-400',
+                i % 3 === 1 && 'text-cyan-400',
+                i % 3 === 2 && 'text-purple-300',
+              ]}>{formatDate(item.date)}</time>
+              <h2 class="text-xl font-display font-800 mt-2 mb-3">{item.title}</h2>
+              <p class="text-white/50 leading-relaxed">{item.description}</p>
             </div>
           </article>
         ))}
