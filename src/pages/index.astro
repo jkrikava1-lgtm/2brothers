@@ -14,14 +14,18 @@ import data from '../data/homepage.json';
     <div class="absolute bottom-1/4 right-1/6 w-[400px] h-[400px] bg-cyan-400/15 rounded-full blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[80px] animate-pulse" style="animation-delay: 2s;"></div>
 
-    <div class="relative max-w-4xl mx-auto px-4 text-center py-12">
-      <img src="/images/hero/dj-duo.gif" alt="2Brothers DJ Duo" class="mx-auto mb-10 w-full max-w-2xl rounded-3xl drop-shadow-[0_0_40px_rgba(255,26,126,0.3)]" />
-
-      <h1 class="text-4xl sm:text-6xl lg:text-8xl font-display font-900 mb-6 leading-none whitespace-nowrap">
-        <span class="bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
-          {data.hero_headline}
-        </span>
-      </h1>
+    <div class="relative max-w-5xl mx-auto px-4 text-center py-12">
+      <!-- Hero image with H1 overlay -->
+      <div class="relative rounded-3xl overflow-hidden mb-10 drop-shadow-[0_0_40px_rgba(255,26,126,0.3)]">
+        <img src="/images/hero/dj-duo.gif" alt="2Brothers DJ Duo" class="w-full block" />
+        <div class="absolute inset-0 bg-gradient-to-t from-night-950/90 via-night-950/30 to-transparent flex items-end justify-center pb-8">
+          <h1 class="text-4xl sm:text-6xl lg:text-8xl font-display font-900 leading-none whitespace-nowrap drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
+            <span class="bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
+              {data.hero_headline}
+            </span>
+          </h1>
+        </div>
+      </div>
       <p class="text-xl lg:text-2xl text-white/60 mb-12 max-w-2xl mx-auto">
         {data.hero_subheadline}
       </p>
