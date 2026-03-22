@@ -53,10 +53,10 @@ const currentPath = Astro.url.pathname;
           <a
             href={item.href}
             class:list={[
-              'px-5 py-2.5 rounded-full text-sm font-bold transition-all',
+              'px-5 py-2.5 rounded-full text-sm font-bold transition-all border',
               currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                ? 'text-pink-300 bg-pink-500/20 shadow-[0_0_25px_rgba(255,26,126,0.5)] border border-pink-500/40'
-                : 'text-white/80 bg-pink-500/10 hover:bg-pink-500/20 hover:text-white'
+                ? 'text-white bg-pink-600/30 border-pink-400/60 shadow-[0_0_30px_rgba(255,50,100,0.6),0_0_60px_rgba(255,50,100,0.2)]'
+                : 'text-pink-200 bg-pink-500/10 border-pink-500/25 shadow-[0_0_12px_rgba(255,26,126,0.25)] hover:bg-pink-500/20 hover:shadow-[0_0_18px_rgba(255,26,126,0.35)] hover:text-white'
             ]}
           >
             {item.label}
@@ -86,10 +86,10 @@ const currentPath = Astro.url.pathname;
           <a
             href={item.href}
             class:list={[
-              'px-5 py-3 rounded-full text-base font-bold transition-all',
+              'px-5 py-3 rounded-full text-base font-bold transition-all border',
               currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                ? 'text-pink-300 bg-pink-500/20 shadow-[0_0_25px_rgba(255,26,126,0.5)] border border-pink-500/40'
-                : 'text-white/80 bg-pink-500/10 hover:bg-pink-500/20 hover:text-white'
+                ? 'text-white bg-pink-600/30 border-pink-400/60 shadow-[0_0_30px_rgba(255,50,100,0.6),0_0_60px_rgba(255,50,100,0.2)]'
+                : 'text-pink-200 bg-pink-500/10 border-pink-500/25 shadow-[0_0_12px_rgba(255,26,126,0.25)] hover:bg-pink-500/20 hover:shadow-[0_0_18px_rgba(255,26,126,0.35)] hover:text-white'
             ]}
           >
             {item.label}
