@@ -40,16 +40,15 @@ const photos = [
             i % 3 === 1 && 'border-cyan-400/20',
             i % 3 === 2 && 'border-purple-400/20',
           ]}>
-            <div class="relative w-full" style="padding-bottom: 56.25%;">
+            <div class="aspect-video">
               <iframe
-                class="absolute inset-0 w-full h-full"
+                class="w-full h-full"
                 src={`https://www.youtube.com/embed/${video.id}`}
                 title={video.title}
-                frameborder="0"
+                style="border:0;"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
-                loading="lazy"
-              ></iframe>
+              />
             </div>
           </div>
         ))}
