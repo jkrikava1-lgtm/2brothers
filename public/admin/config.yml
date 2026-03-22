@@ -17,7 +17,7 @@ collections:
         file: src/data/site.json
         format: json
         fields:
-          - { name: name, label: Název, widget: string }
+          - { name: name, label: Název webu, widget: string }
           - { name: tagline, label: Slogan, widget: string }
           - { name: phone_jiri, label: Telefon Jiří, widget: string }
           - { name: phone_jakub, label: Telefon Jakub, widget: string }
@@ -26,6 +26,12 @@ collections:
             label: Lokace
             widget: list
             field: { name: location, label: Město, widget: string }
+          - name: nav_items
+            label: Položky menu
+            widget: list
+            fields:
+              - { name: label, label: Text, widget: string }
+              - { name: href, label: Odkaz, widget: string }
           - { name: footer_text, label: Text v zápatí, widget: string }
 
   - name: homepage
@@ -38,14 +44,16 @@ collections:
         fields:
           - { name: meta_title, label: SEO titulek, widget: string }
           - { name: meta_description, label: SEO popis, widget: text }
-          - { name: hero_headline, label: Hlavní nadpis, widget: string }
+          - { name: hero_headline, label: Hlavní nadpis (H1), widget: string }
           - { name: hero_subheadline, label: Podnadpis, widget: string }
           - { name: hero_cta, label: Text tlačítka, widget: string }
           - { name: hero_cta_href, label: Odkaz tlačítka, widget: string }
-          - { name: about_headline, label: Nadpis O nás, widget: string }
-          - { name: about_text, label: Text O nás, widget: text }
-          - { name: about_cta, label: Text odkazu O nás, widget: string }
-          - { name: about_cta_href, label: Odkaz O nás, widget: string }
+          - { name: banner_headline, label: Banner nadpis (Ročník 1976), widget: string }
+          - { name: banner_text, label: Banner text, widget: string }
+          - { name: about_headline, label: Nadpis sekce Kdo jsme, widget: string }
+          - { name: about_text, label: Text sekce Kdo jsme, widget: text }
+          - { name: about_cta, label: Text odkazu Více o nás, widget: string }
+          - { name: about_cta_href, label: Odkaz Více o nás, widget: string }
           - { name: services_headline, label: Nadpis služeb, widget: string }
           - name: services
             label: Služby
@@ -74,14 +82,14 @@ collections:
         fields:
           - { name: meta_title, label: SEO titulek, widget: string }
           - { name: meta_description, label: SEO popis, widget: text }
-          - { name: hero_title, label: Nadpis, widget: string }
-          - { name: hero_subtitle, label: Podnadpis, widget: string }
+          - { name: hero_title, label: Nadpis stránky, widget: string }
+          - { name: hero_subtitle, label: Podnadpis stránky, widget: string }
           - { name: intro, label: Úvodní text, widget: text }
-          - { name: approach_headline, label: Nadpis přístupu, widget: string }
-          - { name: approach_text, label: Text přístupu, widget: text }
-          - { name: genres_headline, label: Nadpis žánrů, widget: string }
-          - { name: genres_text, label: Text žánrů, widget: text }
-          - { name: events_headline, label: Nadpis akcí, widget: string }
+          - { name: approach_headline, label: Nadpis Náš přístup, widget: string }
+          - { name: approach_text, label: Text Náš přístup, widget: text }
+          - { name: genres_headline, label: Nadpis Co hrajeme, widget: string }
+          - { name: genres_text, label: Text Co hrajeme, widget: text }
+          - { name: events_headline, label: Nadpis Kde nás potkáte, widget: string }
           - name: events
             label: Typy akcí
             widget: list
@@ -105,10 +113,10 @@ collections:
             label: Novinky
             widget: list
             fields:
-              - { name: title, label: Název, widget: string }
+              - { name: title, label: Název akce, widget: string }
               - { name: date, label: Datum, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
               - { name: description, label: Popis, widget: text }
-              - { name: image, label: Obrázek, widget: image, required: false }
+              - { name: image, label: Plakát/obrázek, widget: image, required: false }
 
   - name: contact
     label: Kontakt
@@ -120,10 +128,10 @@ collections:
         fields:
           - { name: meta_title, label: SEO titulek, widget: string }
           - { name: meta_description, label: SEO popis, widget: text }
-          - { name: hero_title, label: Nadpis, widget: string }
-          - { name: hero_subtitle, label: Podnadpis, widget: string }
+          - { name: hero_title, label: Nadpis stránky, widget: string }
+          - { name: hero_subtitle, label: Podnadpis stránky, widget: string }
           - name: contacts
-            label: Kontakty
+            label: Kontaktní osoby
             widget: list
             fields:
               - { name: name, label: Jméno, widget: string }
@@ -134,8 +142,18 @@ collections:
             widget: list
             field: { name: location, label: Město, widget: string }
           - { name: form_headline, label: Nadpis formuláře, widget: string }
-          - { name: form_button, label: Text tlačítka, widget: string }
+          - name: form_fields
+            label: Popisky formuláře
+            widget: object
+            fields:
+              - { name: name, label: Popisek Jméno, widget: string }
+              - { name: email, label: Popisek E-mail, widget: string }
+              - { name: phone, label: Popisek Telefon, widget: string }
+              - { name: event_type, label: Popisek Typ akce, widget: string }
+              - { name: event_date, label: Popisek Termín, widget: string }
+              - { name: message, label: Popisek Zpráva, widget: string }
           - name: event_types
-            label: Typy akcí
+            label: Typy akcí (výběr ve formuláři)
             widget: list
             field: { name: type, label: Typ, widget: string }
+          - { name: form_button, label: Text tlačítka odeslat, widget: string }
