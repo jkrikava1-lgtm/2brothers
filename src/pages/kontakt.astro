@@ -21,7 +21,7 @@ import data from '../data/kontakt.json';
                 'rounded-3xl border overflow-hidden',
                 i === 0 ? 'border-pink-500/20' : 'border-cyan-400/20',
               ]}>
-                <img src={i === 0 ? '/images/team/jirka.jpg' : '/images/team/kuba.jpg'} alt={contact.name} class="w-full aspect-square object-cover" loading="lazy" />
+                <img src={i === 0 ? '/images/team/jirka.jpg' : '/images/team/kuba.jpg'} alt={contact.name} class="w-full aspect-[3/4] object-cover object-top" loading="lazy" />
                 <div class="p-4 text-center">
                   <p class="text-white font-semibold">{contact.name}</p>
                   <a href={`tel:${contact.phone.replace(/\s/g, '')}`} class:list={[
