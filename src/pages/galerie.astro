@@ -1,21 +1,43 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
+
+const photos = [
+  { src: "/images/galerie/svatebni-areal.jpg", alt: "Svatební areál Radkyně" },
+  { src: "/images/galerie/nevesta-radkyne.jpg", alt: "Nevěsta v Radkyni" },
+  { src: "/images/galerie/svatba-radkyne.jpg", alt: "Svatba Radkyně" },
+  { src: "/images/galerie/oslava-sobotka.jpg", alt: "Oslava narozenin Sobotka" },
+  { src: "/images/galerie/oslava-rohatsko.jpg", alt: "Oslava narozenin Rohatsko" },
+  { src: "/images/galerie/hokej-na-platne.jpg", alt: "Hokejový zápas na plátně" },
+  { src: "/images/galerie/aparatura-valdice.jpg", alt: "Aparatura na oslavě Valdice" },
+  { src: "/images/galerie/vyjezdni-stan.jpg", alt: "Výjezdní stan" },
+  { src: "/images/galerie/akce-2024.jpg", alt: "Akce 2024" },
+  { src: "/images/galerie/akce-2023.jpg", alt: "Akce 2023" },
+  { src: "/images/galerie/akce-foto.jpg", alt: "Akce 2Brothers" },
+];
 ---
 
 <Layout title="Galerie – 2Brothers Music Factory" description="Fotogalerie z akcí 2Brothers Music Factory.">
-  <PageHero title="Galerie" subtitle="Fotky z našich akcí a diskotéky" />
+  <PageHero title="Galerie" subtitle="Fotky z našich akcí, svateb a oslav" />
 
   <section class="py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center py-20">
-        <div class="w-20 h-20 rounded-3xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mx-auto mb-6">
-          <svg class="w-10 h-10 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-        </div>
-        <p class="text-white/60 text-lg">Fotogalerie se připravuje.</p>
-        <p class="text-white/30 text-sm mt-2">Brzy zde najdete fotky z našich akcí.</p>
+      <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+        {photos.map((photo, i) => (
+          <div class:list={[
+            'break-inside-avoid rounded-3xl overflow-hidden border transition-all hover:scale-[1.02]',
+            i % 3 === 0 && 'border-pink-500/20 hover:shadow-[0_0_30px_rgba(255,26,126,0.15)]',
+            i % 3 === 1 && 'border-cyan-400/20 hover:shadow-[0_0_30px_rgba(0,229,223,0.15)]',
+            i % 3 === 2 && 'border-purple-400/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]',
+          ]}>
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              class="w-full block"
+              loading="lazy"
+            />
+          </div>
+        ))}
       </div>
     </div>
   </section>
