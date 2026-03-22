@@ -2,6 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 
+const videos = [
+  { id: "VS2B3euhnKk", title: "2Brothers v akci" },
+  { id: "xmmwa01lDC0", title: "2Brothers live" },
+  { id: "BAIkYpiJSfk", title: "2Brothers show" },
+];
+
 const photos = [
   { src: "/images/galerie/svatebni-areal.jpg", alt: "Svatební areál Radkyně" },
   { src: "/images/galerie/nevesta-radkyne.jpg", alt: "Nevěsta v Radkyni" },
@@ -18,10 +24,41 @@ const photos = [
 ---
 
 <Layout title="Galerie – 2Brothers Music Factory" description="Fotogalerie z akcí 2Brothers Music Factory.">
-  <PageHero title="Galerie" subtitle="Fotky z našich akcí, svateb a oslav" />
+  <PageHero title="Galerie" subtitle="Fotky a videa z našich akcí, svateb a oslav" />
 
+  <!-- Videa -->
   <section class="py-10 lg:py-14">
     <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-display text-center mb-10">Videa z akcí</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {videos.map((video, i) => (
+          <div class:list={[
+            'rounded-3xl overflow-hidden border',
+            i % 3 === 0 && 'border-pink-500/20',
+            i % 3 === 1 && 'border-cyan-400/20',
+            i % 3 === 2 && 'border-purple-400/20',
+          ]}>
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+              <iframe
+                class="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${video.id}`}
+                title={video.title}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fotky -->
+  <section class="py-10 lg:py-14">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-display text-center mb-10">Fotky z akcí</h2>
       <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
         {photos.map((photo, i) => (
           <div class:list={[
