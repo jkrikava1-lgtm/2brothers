@@ -11,8 +11,8 @@ import data from '../data/o-nas.json';
   <section class="py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <p class="text-lg text-light-300 leading-relaxed">{data.intro}</p>
-        <img src="/images/o-nas/smich.jpg" alt="2Brothers v akci" class="rounded-2xl w-full" loading="lazy" />
+        <p class="text-lg text-warm-600 leading-relaxed">{data.intro}</p>
+        <img src="/images/o-nas/smich.jpg" alt="2Brothers v akci" class="rounded-2xl w-full shadow-lg" loading="lazy" />
       </div>
     </div>
   </section>
@@ -21,23 +21,23 @@ import data from '../data/o-nas.json';
   <section class="py-8">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <img src="/images/o-nas/foto-akce.jpg" alt="Akce 2Brothers" class="rounded-2xl w-full" loading="lazy" />
-        <img src="/images/o-nas/vyjezdni-stan.jpg" alt="Výjezdní stan" class="rounded-2xl w-full" loading="lazy" />
+        <img src="/images/o-nas/foto-akce.jpg" alt="Akce 2Brothers" class="rounded-2xl w-full shadow-lg" loading="lazy" />
+        <img src="/images/o-nas/vyjezdni-stan.jpg" alt="Výjezdní stan" class="rounded-2xl w-full shadow-lg" loading="lazy" />
       </div>
     </div>
   </section>
 
   <!-- Approach -->
-  <section class="py-16 lg:py-24 bg-dark-900">
+  <section class="py-16 lg:py-24 bg-cream-200">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
           <h2 class="text-3xl font-display mb-6">{data.approach_headline}</h2>
-          <p class="text-light-300 leading-relaxed">{data.approach_text}</p>
+          <p class="text-warm-600 leading-relaxed">{data.approach_text}</p>
         </div>
         <div>
           <h2 class="text-3xl font-display mb-6">{data.genres_headline}</h2>
-          <p class="text-light-300 leading-relaxed">{data.genres_text}</p>
+          <p class="text-warm-600 leading-relaxed">{data.genres_text}</p>
         </div>
       </div>
     </div>
@@ -52,8 +52,8 @@ import data from '../data/o-nas.json';
           <h2 class="text-3xl font-display mb-8">{data.events_headline}</h2>
           <ul class="space-y-3">
             {data.events.map((event) => (
-              <li class="flex items-center gap-3 text-light-300">
-                <svg class="w-5 h-5 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li class="flex items-center gap-3 text-warm-700">
+                <svg class="w-5 h-5 text-accent-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
                 </svg>
                 {event}
@@ -67,9 +67,9 @@ import data from '../data/o-nas.json';
           <h2 class="text-3xl font-display mb-8">Kdo za tím stojí</h2>
           <div class="space-y-6">
             {data.members.map((member) => (
-              <div class="p-6 rounded-2xl bg-dark-800 border border-dark-700/50">
-                <h3 class="text-xl font-display font-700 text-light-50 mb-2">{member.name}</h3>
-                <a href={`tel:${member.phone.replace(/\s/g, '')}`} class="text-accent-400 hover:text-accent-300 transition-colors">
+              <div class="p-6 rounded-2xl bg-cream-100 border border-warm-200/60 shadow-sm">
+                <h3 class="text-xl font-display font-700 text-warm-950 mb-2">{member.name}</h3>
+                <a href={`tel:${member.phone.replace(/\s/g, '')}`} class="text-accent-700 hover:text-accent-600 transition-colors">
                   {member.phone}
                 </a>
               </div>
