@@ -7,14 +7,8 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<section class="relative py-12 lg:py-16 overflow-hidden">
-  <!-- Gradient background -->
-  <div class="absolute inset-0 bg-night-950"></div>
-  <!-- Glow orbs -->
-  <div class="absolute top-0 left-1/4 w-64 h-64 bg-pink-500/15 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-1/4 w-48 h-48 bg-cyan-400/10 rounded-full blur-3xl"></div>
-
-  <div class="relative max-w-7xl mx-auto px-4 text-center">
+<section class="py-12 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 text-center">
     <h1 class="text-5xl lg:text-6xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">{title}</h1>
     {subtitle && (
       <p class="mt-4 text-lg text-white/60 max-w-2xl mx-auto">{subtitle}</p>
