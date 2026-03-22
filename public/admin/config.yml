@@ -93,6 +93,23 @@ collections:
               - { name: name, label: Jméno, widget: string }
               - { name: phone, label: Telefon, widget: string }
 
+  - name: novinky
+    label: Novinky
+    files:
+      - name: novinky-list
+        label: Seznam novinek
+        file: src/data/novinky.json
+        format: json
+        fields:
+          - name: items
+            label: Novinky
+            widget: list
+            fields:
+              - { name: title, label: Název, widget: string }
+              - { name: date, label: Datum, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+              - { name: description, label: Popis, widget: text }
+              - { name: image, label: Obrázek, widget: image, required: false }
+
   - name: contact
     label: Kontakt
     files:
