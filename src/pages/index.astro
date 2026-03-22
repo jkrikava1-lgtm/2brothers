@@ -7,15 +7,13 @@ import data from '../data/homepage.json';
 
   <!-- Hero -->
   <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-    <!-- Hero image as full background, fading into page -->
-    <div class="absolute inset-0">
-      <img src="/images/hero/hero.jpg" alt="2Brothers DJ Duo" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-b from-night-950/40 via-transparent to-night-950"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-night-950/60 via-transparent to-night-950/60"></div>
-    </div>
-
     <div class="relative max-w-5xl mx-auto px-4 text-center py-12">
-      <h1 class="text-4xl sm:text-6xl lg:text-8xl font-display font-900 leading-none whitespace-nowrap drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)] mb-10">
+      <!-- Hero image fading into background -->
+      <div class="relative mb-10" style="mask-image: radial-gradient(ellipse 80% 70% at center, black 40%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 80% 70% at center, black 40%, transparent 100%);">
+        <img src="/images/hero/hero.jpg" alt="2Brothers DJ Duo" class="w-full block" />
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl lg:text-8xl font-display font-900 leading-none whitespace-nowrap drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)] -mt-20 relative z-10 mb-10">
         <span class="bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
           {data.hero_headline}
         </span>
