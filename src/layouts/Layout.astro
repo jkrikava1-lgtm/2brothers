@@ -26,7 +26,7 @@ const currentPath = Astro.url.pathname;
 <body class="min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-night-950">
+  <header class="fixed top-0 left-0 right-0 z-50">
     <div class="max-w-6xl mx-auto px-4 h-28 lg:h-36 flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 group">
@@ -69,7 +69,7 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Mobile Nav -->
-    <div id="mobile-nav" class="lg:hidden hidden bg-night-950">
+    <div id="mobile-nav" class="lg:hidden hidden bg-night-950/95 backdrop-blur-xl">
       <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
         {site.nav_items.map((item: { label: string; href: string }) => (
           <a
