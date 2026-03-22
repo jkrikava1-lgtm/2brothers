@@ -30,7 +30,10 @@ const currentPath = Astro.url.pathname;
     <div class="max-w-6xl mx-auto px-4 h-32 lg:h-40 flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 group">
-        <img src="/images/logo.png" alt="2Brothers Music Factory" class="h-28 lg:h-36 w-auto" />
+        <div class="flex flex-col items-center">
+          <img src="/images/logo.png" alt="2Brothers Music Factory" class="h-24 lg:h-32 w-auto" />
+          <span class="text-[10px] lg:text-xs font-bold tracking-[0.3em] text-white/60 uppercase -mt-1">Music Factory</span>
+        </div>
       </a>
 
       <!-- Desktop Nav -->
@@ -99,7 +102,10 @@ const currentPath = Astro.url.pathname;
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Brand -->
         <div>
-          <a href="/" class="inline-block"><img src="/images/logo.png" alt="2Brothers Music Factory" class="h-20 w-auto mb-3" /></a>
+          <a href="/" class="inline-block">
+            <img src="/images/logo.png" alt="2Brothers Music Factory" class="h-20 w-auto" />
+            <span class="block text-[10px] font-bold tracking-[0.3em] text-white/50 uppercase text-center -mt-1">Music Factory</span>
+          </a>
           <p class="text-white/50 text-sm">{site.tagline}</p>
           <p class="text-white/40 text-sm mt-2">{site.locations.join(' · ')}</p>
         </div>
