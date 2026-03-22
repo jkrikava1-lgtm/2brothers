@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname;
 
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-night-950">
-    <div class="max-w-6xl mx-auto px-4 h-36 lg:h-48 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 h-36 lg:h-48 flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 group">
         <img src="/images/logo.png" alt="2Brothers Music Factory" class="h-32 lg:h-44 w-auto" />
@@ -70,7 +70,7 @@ const currentPath = Astro.url.pathname;
 
     <!-- Mobile Nav -->
     <div id="mobile-nav" class="lg:hidden hidden bg-night-950/95 backdrop-blur-xl">
-      <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
+      <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
         {site.nav_items.map((item: { label: string; href: string }) => (
           <a
             href={item.href}
@@ -95,7 +95,7 @@ const currentPath = Astro.url.pathname;
 
   <!-- Footer -->
   <footer class="relative overflow-hidden">
-    <div class="relative max-w-6xl mx-auto px-4 py-12">
+    <div class="relative max-w-7xl mx-auto px-4 py-12">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Brand -->
         <div>
