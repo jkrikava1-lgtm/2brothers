@@ -35,7 +35,7 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 overflow-hidden">
+  <header class="fixed top-0 left-0 right-0 z-50 overflow-visible" style="mask-image: linear-gradient(to bottom, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);">
     <!-- Header glow -->
     <div class="absolute inset-0 bg-night-950"></div>
     <div class="absolute -top-20 -left-20 w-[300px] h-[300px] bg-pink-500/15 rounded-full blur-[100px]"></div>
