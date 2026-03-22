@@ -18,10 +18,17 @@ import data from '../data/homepage.json';
           {data.hero_headline}
         </span>
       </h1>
-      <p class="text-xl lg:text-2xl text-white/60 mb-12 max-w-2xl mx-auto">
+      <p class="text-xl lg:text-2xl text-white/60 mb-8 max-w-2xl mx-auto">
         {data.hero_subheadline}
       </p>
-      <a
+
+      <!-- Ročník 1976 -->
+      <div class="p-6 lg:p-8 rounded-3xl border border-pink-500/30 bg-pink-500/5 shadow-[0_0_40px_rgba(255,26,126,0.1)] mb-10 max-w-3xl mx-auto">
+        <h2 class="text-2xl lg:text-3xl font-display font-900 mb-2 bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">Ročníku 1976, pojď to oslavit s námi!</h2>
+        <p class="text-lg lg:text-xl text-white/70 font-medium">50 je jen jednou v životě a ten mejdan má bejt velkej!</p>
+      </div>
+
+      <
         href={data.hero_cta_href}
         class="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white rounded-full text-lg font-bold transition-all hover:scale-110 hover:shadow-[0_0_40px_rgba(255,26,126,0.4)]"
       >
@@ -96,16 +103,6 @@ import data from '../data/homepage.json';
             <span class="text-sm text-white/80 font-medium">{item}</span>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Ročník 1976 -->
-  <section class="py-12 lg:py-16">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="p-8 lg:p-12 rounded-3xl border border-pink-500/30 bg-pink-500/5 shadow-[0_0_40px_rgba(255,26,126,0.1)]">
-        <h2 class="text-3xl lg:text-5xl font-display font-900 mb-4 bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">Ročníku 1976, pojď to oslavit s námi!</h2>
-        <p class="text-xl lg:text-2xl text-white/70 font-medium">50 je jen jednou v životě a ten mejdan má bejt velkej!</p>
       </div>
     </div>
   </section>
