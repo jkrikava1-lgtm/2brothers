@@ -1,8 +1,8 @@
 {
-  "meta_title": "Kontakt – 2Brothers Music Factory",
-  "meta_description": "Kontaktujte 2Brothers Music Factory. DJ produkce na svatby, oslavy a akce v okolí Jičína.",
+  "meta_title": "Kontakt – 2Brothers Music Factory | DJ na svatbu a oslavu",
+  "meta_description": "Kontaktujte 2Brothers Music Factory. DJ na svatbu, oslavu a firemní akci v okolí Jičína. Ozveme se do 24 hodin.",
   "hero_title": "Kontakt",
-  "hero_subtitle": "Ozvěte se nám — rádi vám připravíme nezapomenutelný zážitek",
+  "hero_subtitle": "Napište nám nebo zavolejte — rádi si promluvíme o vaší akci",
   "contacts": [
     {
       "name": "Jiří Samšiňák",
@@ -15,14 +15,14 @@
   ],
   "email": "2brothers@2brothers.cz",
   "locations": ["Jičín", "Sobotka", "Podhorní Újezd"],
-  "form_headline": "Napište nám",
+  "form_headline": "Nezávazná poptávka",
   "form_fields": {
     "name": "Jméno",
     "email": "E-mail",
     "phone": "Telefon",
     "event_type": "Typ akce",
     "event_date": "Termín akce",
-    "message": "Zpráva"
+    "message": "Řekněte nám víc o vaší akci"
   },
   "event_types": ["Svatba", "Oslava / narozeniny", "Firemní večírek", "Diskotéka", "Jiné"],
   "form_button": "Odeslat poptávku"
