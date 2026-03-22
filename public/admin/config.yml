@@ -1,0 +1,122 @@
+backend:
+  name: github
+  repo: jkrikava1-lgtm/2brothers
+  branch: main
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: site
+    label: Nastavení webu
+    files:
+      - name: site-config
+        label: Základní nastavení
+        file: src/data/site.json
+        format: json
+        fields:
+          - { name: name, label: Název, widget: string }
+          - { name: tagline, label: Slogan, widget: string }
+          - { name: phone_jiri, label: Telefon Jiří, widget: string }
+          - { name: phone_jakub, label: Telefon Jakub, widget: string }
+          - { name: email, label: E-mail, widget: string }
+          - name: locations
+            label: Lokace
+            widget: list
+            field: { name: location, label: Město, widget: string }
+          - { name: footer_text, label: Text v zápatí, widget: string }
+
+  - name: homepage
+    label: Hlavní stránka
+    files:
+      - name: homepage-content
+        label: Obsah hlavní stránky
+        file: src/data/homepage.json
+        format: json
+        fields:
+          - { name: meta_title, label: SEO titulek, widget: string }
+          - { name: meta_description, label: SEO popis, widget: text }
+          - { name: hero_headline, label: Hlavní nadpis, widget: string }
+          - { name: hero_subheadline, label: Podnadpis, widget: string }
+          - { name: hero_cta, label: Text tlačítka, widget: string }
+          - { name: hero_cta_href, label: Odkaz tlačítka, widget: string }
+          - { name: about_headline, label: Nadpis O nás, widget: string }
+          - { name: about_text, label: Text O nás, widget: text }
+          - { name: about_cta, label: Text odkazu O nás, widget: string }
+          - { name: about_cta_href, label: Odkaz O nás, widget: string }
+          - { name: services_headline, label: Nadpis služeb, widget: string }
+          - name: services
+            label: Služby
+            widget: list
+            fields:
+              - { name: title, label: Název, widget: string }
+              - { name: description, label: Popis, widget: text }
+              - { name: icon, label: Ikona, widget: select, options: [heart, cake, briefcase, music] }
+          - { name: equipment_headline, label: Nadpis vybavení, widget: string }
+          - name: equipment_items
+            label: Vybavení
+            widget: list
+            field: { name: item, label: Položka, widget: string }
+          - { name: cta_headline, label: CTA nadpis, widget: string }
+          - { name: cta_text, label: CTA text, widget: text }
+          - { name: cta_button, label: CTA tlačítko, widget: string }
+          - { name: cta_href, label: CTA odkaz, widget: string }
+
+  - name: about
+    label: O nás
+    files:
+      - name: about-content
+        label: Obsah stránky O nás
+        file: src/data/o-nas.json
+        format: json
+        fields:
+          - { name: meta_title, label: SEO titulek, widget: string }
+          - { name: meta_description, label: SEO popis, widget: text }
+          - { name: hero_title, label: Nadpis, widget: string }
+          - { name: hero_subtitle, label: Podnadpis, widget: string }
+          - { name: intro, label: Úvodní text, widget: text }
+          - { name: approach_headline, label: Nadpis přístupu, widget: string }
+          - { name: approach_text, label: Text přístupu, widget: text }
+          - { name: genres_headline, label: Nadpis žánrů, widget: string }
+          - { name: genres_text, label: Text žánrů, widget: text }
+          - { name: events_headline, label: Nadpis akcí, widget: string }
+          - name: events
+            label: Typy akcí
+            widget: list
+            field: { name: event, label: Akce, widget: string }
+          - name: members
+            label: Členové
+            widget: list
+            fields:
+              - { name: name, label: Jméno, widget: string }
+              - { name: phone, label: Telefon, widget: string }
+
+  - name: contact
+    label: Kontakt
+    files:
+      - name: contact-content
+        label: Obsah stránky Kontakt
+        file: src/data/kontakt.json
+        format: json
+        fields:
+          - { name: meta_title, label: SEO titulek, widget: string }
+          - { name: meta_description, label: SEO popis, widget: text }
+          - { name: hero_title, label: Nadpis, widget: string }
+          - { name: hero_subtitle, label: Podnadpis, widget: string }
+          - name: contacts
+            label: Kontakty
+            widget: list
+            fields:
+              - { name: name, label: Jméno, widget: string }
+              - { name: phone, label: Telefon, widget: string }
+          - { name: email, label: E-mail, widget: string }
+          - name: locations
+            label: Lokace
+            widget: list
+            field: { name: location, label: Město, widget: string }
+          - { name: form_headline, label: Nadpis formuláře, widget: string }
+          - { name: form_button, label: Text tlačítka, widget: string }
+          - name: event_types
+            label: Typy akcí
+            widget: list
+            field: { name: type, label: Typ, widget: string }
