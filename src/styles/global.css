@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* Deep dark base - černofialový podklad */
-  --color-night-950: #110a20;
-  --color-night-900: #1a1030;
-  --color-night-800: #241840;
-  --color-night-700: #2f2050;
-  --color-night-600: #3d2a65;
+  /* Deep dark base - výrazně černofialový podklad */
+  --color-night-950: #1a0f30;
+  --color-night-900: #251848;
+  --color-night-800: #302058;
+  --color-night-700: #3d2a6a;
+  --color-night-600: #4a357d;
 
   /* Neon pink / magenta */
   --color-pink-50: #fff0f6;
