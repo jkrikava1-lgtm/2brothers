@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+// Novinky data - zatím staticky, později lze přesunout do JSON
+const novinky = [
+  {
+    title: "Diskotéka v Kovači",
+    date: "2025-05-17",
+    description: "Přijďte se bavit na další naši diskotéku v Kovači! Start ve 20:00, na tančení je místo vždy. Rezervace míst k sezení na telefonu.",
+  },
+  {
+    title: "Valentýnská diskotéka",
+    date: "2025-02-14",
+    description: "Slavte Valentýna s námi na speciální valentýnské diskotéce v Kovači.",
+  },
+  {
+    title: "Vánoční párty",
+    date: "2024-12-21",
+    description: "Tradiční předvánoční diskotéka. Přijďte si zatancovat a rozloučit se s rokem ve velkém stylu!",
+  },
+];
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<Layout title="Novinky – 2Brothers Music Factory" description="Aktuality a nadcházející akce od 2Brothers Music Factory.">
+  <PageHero title="Novinky" subtitle="Aktuální akce a termíny" />
+
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="space-y-6">
+        {novinky.map((item) => (
+          <article class="p-6 lg:p-8 rounded-2xl bg-dark-800 border border-dark-700/50">
+            <time class="text-sm text-accent-400 font-medium">{formatDate(item.date)}</time>
+            <h2 class="text-xl font-display font-700 mt-2 mb-3">{item.title}</h2>
+            <p class="text-light-400 leading-relaxed">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,154 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = site.tagline } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-dark-900/95 backdrop-blur-md border-b border-dark-700/50">
+    <div class="max-w-6xl mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <span class="text-xl lg:text-2xl font-display font-800 text-light-50 group-hover:text-accent-400 transition-colors">
+          2Brothers
+        </span>
+        <span class="hidden sm:inline text-xs text-light-400 uppercase tracking-widest">Music Factory</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-1">
+        {site.nav_items.map((item: { label: string; href: string }) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-4 py-2 rounded-lg text-sm font-medium transition-colors',
+              currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                ? 'text-accent-400 bg-accent-400/10'
+                : 'text-light-300 hover:text-light-50 hover:bg-dark-700/50'
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a href="/kontakt" class="ml-3 px-5 py-2 bg-accent-500 hover:bg-accent-400 text-light-50 rounded-lg text-sm font-semibold transition-colors">
+          Napište nám
+        </a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-toggle"
+        class="lg:hidden w-10 h-10 flex items-center justify-center text-light-200 hover:text-light-50"
+        aria-label="Otevřít menu"
+      >
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-nav" class="lg:hidden hidden border-t border-dark-700/50 bg-dark-900/98 backdrop-blur-md">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
+        {site.nav_items.map((item: { label: string; href: string }) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-4 py-3 rounded-lg text-base font-medium transition-colors',
+              currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                ? 'text-accent-400 bg-accent-400/10'
+                : 'text-light-200 hover:text-light-50 hover:bg-dark-700/50'
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-1 pt-16 lg:pt-20">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark-900 border-t border-dark-700/50">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Brand -->
+        <div>
+          <h3 class="text-lg font-display font-700 text-light-50 mb-2">2Brothers Music Factory</h3>
+          <p class="text-light-400 text-sm">{site.tagline}</p>
+          <p class="text-light-400 text-sm mt-2">{site.locations.join(' · ')}</p>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="text-sm font-semibold text-light-300 uppercase tracking-wider mb-3">Kontakt</h4>
+          <div class="space-y-1 text-sm text-light-400">
+            <p>Jiří Samšiňák: <a href={`tel:${site.phone_jiri.replace(/\s/g, '')}`} class="text-light-200 hover:text-accent-400">{site.phone_jiri}</a></p>
+            <p>Jakub Křikava: <a href={`tel:${site.phone_jakub.replace(/\s/g, '')}`} class="text-light-200 hover:text-accent-400">{site.phone_jakub}</a></p>
+            <p><a href={`mailto:${site.email}`} class="text-light-200 hover:text-accent-400">{site.email}</a></p>
+          </div>
+        </div>
+
+        <!-- Nav -->
+        <div>
+          <h4 class="text-sm font-semibold text-light-300 uppercase tracking-wider mb-3">Navigace</h4>
+          <div class="space-y-1">
+            {site.nav_items.map((item: { label: string; href: string }) => (
+              <a href={item.href} class="block text-sm text-light-400 hover:text-accent-400 transition-colors">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 pt-6 border-t border-dark-700/50 text-center text-xs text-light-400">
+        {site.footer_text}
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('mobile-toggle');
+    const nav = document.getElementById('mobile-nav');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    toggle?.addEventListener('click', () => {
+      const isOpen = !nav?.classList.contains('hidden');
+      nav?.classList.toggle('hidden');
+      iconOpen?.classList.toggle('hidden');
+      iconClose?.classList.toggle('hidden');
+      toggle.setAttribute('aria-label', isOpen ? 'Otevřít menu' : 'Zavřít menu');
+    });
+  </script>
+</body>
+</html>

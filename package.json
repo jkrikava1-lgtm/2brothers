@@ -1,0 +1,17 @@
+{
+  "name": "2brothers",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.17.1",
+    "@astrojs/vercel": "^9.0.4",
+    "tailwindcss": "^4.2.1",
+    "@tailwindcss/vite": "^4.2.1"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "meta_title": "O nás – 2Brothers Music Factory",
+  "meta_description": "Poznejte DJ duo 2Brothers Music Factory. Jiří Samšiňák a Jakub Křikava — hudba pro vaše akce z Jičínska.",
+  "hero_title": "O nás",
+  "hero_subtitle": "Dva bráchové, jedna vášeň — muzika",
+  "intro": "Ani pro jednoho z nás není hraní hlavním zaměstnáním, děláme to ve svém volném čase. Ale právě proto do toho dáváme maximum — každá akce je pro nás příležitost se bavit společně s vámi.",
+  "approach_headline": "Náš přístup",
+  "approach_text": "Nečekejte obyčejné přehrávání muziky z předem připraveného playlistu. Reagujeme na publikum, přizpůsobujeme se atmosféře a hrajeme to, co vás rozproudí. Každá akce je jiná a my to tak máme rádi.",
+  "genres_headline": "Co hrajeme",
+  "genres_text": "Současné hity české i zahraniční, rock, punk, techno, house, 80's a s obzvláštní láskou 90. léta. Repertoár přizpůsobíme vašim přáním.",
+  "events_headline": "Kde nás potkáte",
+  "events": [
+    "Svatby a oslavy",
+    "Narozeniny a výročí",
+    "Firemní večírky",
+    "Soukromé akce",
+    "Diskotéky v Kovači"
+  ],
+  "members": [
+    {
+      "name": "Jiří Samšiňák",
+      "phone": "+420 774 850 074"
+    },
+    {
+      "name": "Jakub Křikava",
+      "phone": "+420 777 724 573"
+    }
+  ]
+}

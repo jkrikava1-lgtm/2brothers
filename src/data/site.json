@@ -1,0 +1,16 @@
+{
+  "name": "2Brothers Music Factory",
+  "tagline": "Muzika pro vaši párty",
+  "phone_jiri": "+420 774 850 074",
+  "phone_jakub": "+420 777 724 573",
+  "email": "2brothers@2brothers.cz",
+  "locations": ["Jičín", "Sobotka", "Podhorní Újezd"],
+  "nav_items": [
+    { "label": "Úvod", "href": "/" },
+    { "label": "O nás", "href": "/o-nas" },
+    { "label": "Galerie", "href": "/galerie" },
+    { "label": "Novinky", "href": "/novinky" },
+    { "label": "Kontakt", "href": "/kontakt" }
+  ],
+  "footer_text": "© 2026 2Brothers Music Factory. Všechna práva vyhrazena."
+}

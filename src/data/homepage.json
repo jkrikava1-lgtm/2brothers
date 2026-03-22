@@ -1,0 +1,48 @@
+{
+  "meta_title": "2Brothers Music Factory – Muzika pro vaši párty",
+  "meta_description": "DJ duo z Jičínska. Hrajeme na svatby, oslavy, firemní večírky i soukromé akce. Profesionální zvuk, světla a zábava na míru.",
+  "hero_headline": "Muzika pro vaši párty",
+  "hero_subheadline": "Chceme se bavit s vámi, pojďte se bavit s 2Brothers!",
+  "hero_cta": "Napište nám",
+  "hero_cta_href": "/kontakt",
+  "about_headline": "Kdo jsme?",
+  "about_text": "Jsme DJ duo z Jičínska. Ani pro jednoho z nás není hraní hlavním zaměstnáním — děláme to ve svém volném čase, protože nás to baví. A přesně tu energii přinášíme na každou akci.",
+  "about_cta": "Více o nás",
+  "about_cta_href": "/o-nas",
+  "services_headline": "Co pro vás připravíme",
+  "services": [
+    {
+      "title": "Svatby",
+      "description": "Kompletní hudební servis od příjezdu hostů až do ranních hodin. Vytvoříme atmosféru přesně podle vašich představ.",
+      "icon": "heart"
+    },
+    {
+      "title": "Oslavy & narozeniny",
+      "description": "Kulaté narozeniny, výročí, promoce — postaráme se o soundtrack vašeho velkého dne.",
+      "icon": "cake"
+    },
+    {
+      "title": "Firemní večírky",
+      "description": "Profesionální DJ produkce pro firemní akce, teambuildingy a vánoční večírky.",
+      "icon": "briefcase"
+    },
+    {
+      "title": "Diskotéky",
+      "description": "Pravidelné diskotéky v Kovači a okolí. Sledujte naše novinky pro aktuální termíny.",
+      "icon": "music"
+    }
+  ],
+  "equipment_headline": "Profesionální vybavení",
+  "equipment_items": [
+    "RCF aparatura 2× 2100W",
+    "18\" subwoofer 2200W",
+    "Projekce 280 cm",
+    "Světelná show",
+    "Kouřové efekty",
+    "Bublinkovač"
+  ],
+  "cta_headline": "Plánujete akci?",
+  "cta_text": "Napište nám nebo zavolejte — ceny jsou individuální podle délky a typu produkce.",
+  "cta_button": "Kontaktujte nás",
+  "cta_href": "/kontakt"
+}
