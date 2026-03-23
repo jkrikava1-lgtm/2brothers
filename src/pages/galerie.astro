@@ -69,8 +69,9 @@ const photos = [
             <img
               src={photo.src}
               alt={photo.alt}
-              class="w-full block"
+              class="w-full block cursor-pointer"
               loading="lazy"
+              data-lightbox
             />
           </div>
         ))}
@@ -78,3 +79,55 @@ const photos = [
     </div>
   </section>
 </Layout>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm items-center justify-center p-4 cursor-pointer" style="display:none;">
+  <button id="lb-close" class="absolute top-4 right-4 text-white/80 hover:text-white text-4xl font-bold z-10">&times;</button>
+  <button id="lb-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-5xl z-10">&#8249;</button>
+  <button id="lb-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-5xl z-10">&#8250;</button>
+  <img id="lb-img" class="max-h-[90vh] max-w-[90vw] object-contain rounded-2xl" src="" alt="" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox')!;
+  const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+  const images = Array.from(document.querySelectorAll('[data-lightbox]')) as HTMLImageElement[];
+  let current = 0;
+
+  function show(idx: number) {
+    current = idx;
+    lbImg.src = images[idx].src;
+    lbImg.alt = images[idx].alt;
+    lightbox.style.display = 'flex';
+  }
+
+  images.forEach((img, i) => {
+    img.addEventListener('click', () => show(i));
+  });
+
+  document.getElementById('lb-close')!.addEventListener('click', (e) => {
+    e.stopPropagation();
+    lightbox.style.display = 'none';
+  });
+
+  document.getElementById('lb-prev')!.addEventListener('click', (e) => {
+    e.stopPropagation();
+    show((current - 1 + images.length) % images.length);
+  });
+
+  document.getElementById('lb-next')!.addEventListener('click', (e) => {
+    e.stopPropagation();
+    show((current + 1) % images.length);
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.style.display = 'none';
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'none') return;
+    if (e.key === 'Escape') lightbox.style.display = 'none';
+    if (e.key === 'ArrowLeft') show((current - 1 + images.length) % images.length);
+    if (e.key === 'ArrowRight') show((current + 1) % images.length);
+  });
+</script>
