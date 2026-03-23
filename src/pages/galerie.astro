@@ -32,7 +32,7 @@ const photos = [
   <section class="py-10 lg:py-14">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-3xl font-display text-center mb-10">Videa z akcí</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {videos.map((video, i) => (
           <div class:list={[
             'rounded-3xl overflow-hidden border',
@@ -40,7 +40,7 @@ const photos = [
             i % 3 === 1 && 'border-cyan-400/20',
             i % 3 === 2 && 'border-purple-400/20',
           ]}>
-            <div class="aspect-video relative cursor-pointer group" data-video-id={video.id}>
+            <div class="aspect-[9/16] relative cursor-pointer group" data-video-id={video.id}>
               <img
                 src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                 alt={video.title}
