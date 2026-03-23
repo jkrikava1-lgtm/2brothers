@@ -40,7 +40,7 @@ const photos = [
             i % 3 === 1 && 'border-cyan-400/20',
             i % 3 === 2 && 'border-purple-400/20',
           ]}>
-            <div class="aspect-[9/16] relative cursor-pointer group" data-video-id={video.id}>
+            <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener" class="aspect-[9/16] relative block group">
               <img
                 src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                 alt={video.title}
@@ -52,7 +52,7 @@ const photos = [
                   <path d="M8 5v14l11-7z"/>
                 </svg>
               </div>
-            </div>
+            </a>
           </div>
         ))}
       </div>
@@ -84,37 +84,3 @@ const photos = [
   </section>
 </Layout>
 
-<div id="video-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4" style="display:none;">
-  <div class="relative w-full max-w-2xl mx-auto">
-    <button id="modal-close" class="absolute -top-10 right-0 text-white/80 hover:text-white text-3xl font-bold">&times;</button>
-    <div class="aspect-[9/16] w-full rounded-3xl overflow-hidden">
-      <iframe id="modal-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-</div>
-
-<script>
-  const modal = document.getElementById('video-modal')!;
-  const iframe = document.getElementById('modal-iframe') as HTMLIFrameElement;
-  const closeBtn = document.getElementById('modal-close')!;
-
-  document.querySelectorAll('[data-video-id]').forEach(el => {
-    el.addEventListener('click', () => {
-      const id = el.getAttribute('data-video-id');
-      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-      modal.style.display = 'flex';
-    });
-  });
-
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    iframe.src = '';
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-      iframe.src = '';
-    }
-  });
-</script>
