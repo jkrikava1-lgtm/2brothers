@@ -3,11 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 
 const videos = [
-  { id: "VS2B3euhnKk", title: "2Brothers v akci" },
-  { id: "xmmwa01lDC0", title: "2Brothers live" },
-  { id: "BAIkYpiJSfk", title: "2Brothers show" },
-  { id: "Y5IVlBw2ywo", title: "2Brothers party" },
-  { id: "nlYwm0NMvX0", title: "2Brothers music" },
+  { src: "/videos/jirka-platno.mp4", title: "Jirka s plátnem" },
+  { src: "/videos/dj-kid.mp4", title: "DJ Kid" },
+  { src: "/videos/platno-text.mp4", title: "Plátno v akci" },
+  { src: "/videos/pred-svatbou.mp4", title: "Před svatbou" },
+  { src: "/videos/svetla.mp4", title: "Světelná show" },
 ];
 
 const photos = [
@@ -40,19 +40,14 @@ const photos = [
             i % 3 === 1 && 'border-cyan-400/20',
             i % 3 === 2 && 'border-purple-400/20',
           ]}>
-            <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener" class="aspect-[9/16] relative block group">
-              <img
-                src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                alt={video.title}
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors">
-                <svg class="w-16 h-16 text-white/90 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-            </a>
+            <video
+              class="w-full aspect-[9/16] object-cover"
+              src={video.src}
+              poster=""
+              controls
+              preload="metadata"
+              playsinline
+            />
           </div>
         ))}
       </div>
@@ -83,4 +78,3 @@ const photos = [
     </div>
   </section>
 </Layout>
-
