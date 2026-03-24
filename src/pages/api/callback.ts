@@ -24,29 +24,26 @@ export async function GET({ url }: { url: URL }) {
   });
 
   const tokenData = await tokenRes.json();
+  const token = tokenData.access_token || '';
 
-  const content = `
-    <!DOCTYPE html>
-    <html>
-      <head><title>CMS Auth</title></head>
-      <body>
-        <script>
-          (function() {
-            function receiveMessage(e) {
-              console.log("receiveMessage %o", e);
-              window.opener.postMessage(
-                'authorization:github:success:${JSON.stringify({ token: tokenData.access_token, provider: 'github' })}',
-                e.origin
-              );
-              window.removeEventListener("message", receiveMessage, false);
-            }
-            window.addEventListener("message", receiveMessage, false);
-            window.opener.postMessage("authorizing:github", "*");
-          })();
-        </script>
-      </body>
-    </html>
-  `;
+  const content = `<!DOCTYPE html>
+<html>
+<head><title>CMS Auth</title></head>
+<body>
+<script>
+(function() {
+  var token = "${token}";
+  var data = JSON.stringify({ token: token, provider: "github" });
+  function receiveMessage(e) {
+    window.opener.postMessage("authorization:github:success:" + data, e.origin);
+    window.removeEventListener("message", receiveMessage, false);
+  }
+  window.addEventListener("message", receiveMessage, false);
+  window.opener.postMessage("authorizing:github", "*");
+})();
+</script>
+</body>
+</html>`;
 
   return new Response(content, {
     headers: { 'Content-Type': 'text/html' },
