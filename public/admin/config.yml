@@ -2,7 +2,7 @@ backend:
   name: github
   repo: jkrikava1-lgtm/2brothers
   branch: main
-  base_url: https://2brothers.cz
+  base_url: https://www.2brothers.cz
   auth_endpoint: api/auth
 
 media_folder: public/images
