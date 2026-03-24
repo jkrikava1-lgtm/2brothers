@@ -9,5 +9,13 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    { "source": "/novinky-a-kde-hrajeme", "destination": "/novinky", "permanent": true },
+    { "source": "/novinky-a-kde-hrajeme/", "destination": "/novinky", "permanent": true },
+    { "source": "/galeryje", "destination": "/galerie", "permanent": true },
+    { "source": "/galeryje/", "destination": "/galerie", "permanent": true },
+    { "source": "/kontakty", "destination": "/kontakt", "permanent": true },
+    { "source": "/kontakty/", "destination": "/kontakt", "permanent": true }
   ]
 }
