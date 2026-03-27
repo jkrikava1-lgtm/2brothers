@@ -23,19 +23,21 @@ const { title, subtitle, video = '/videos/animace-panacci.mp4', glow = false } =
         )}
       </div>
       <!-- Video s panáčky - menší velikost -->
-      <div class="flex-shrink-0" style="width: 280px; position: relative; z-index: 1; mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-composite: intersect; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); -webkit-mask-composite: source-in;">
+      <div class="flex-shrink-0 relative" style="width: 280px; z-index: 1;">
         {glow && (
-          <div class="absolute inset-x-0 -bottom-[20%] top-[40%] bg-pink-500/25 rounded-full blur-[50px] sm:blur-[70px] scale-x-150 z-0"></div>
+          <div class="absolute inset-x-0 -bottom-[10%] top-[50%] bg-pink-500/25 rounded-full blur-[70px] scale-x-150 z-0"></div>
         )}
-        <video
-          class="w-full h-auto block relative z-10"
-          autoplay
-          loop
-          muted
-          playsinline
-        >
-          <source src={video} type="video/mp4" />
-        </video>
+        <div style="mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-composite: intersect; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); -webkit-mask-composite: source-in;">
+          <video
+            class="w-full h-auto block"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
+            <source src={video} type="video/mp4" />
+          </video>
+        </div>
       </div>
     </div>
 
