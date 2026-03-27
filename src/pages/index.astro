@@ -9,19 +9,6 @@ import data from '../data/homepage.json';
   <section class="relative flex items-center justify-center overflow-hidden">
     <div class="relative max-w-5xl mx-auto px-4 text-center py-4 sm:py-12">
 
-      <!-- Animace panáčků -->
-      <div class="flex justify-center mb-2 sm:mb-4">
-        <video
-          autoplay
-          loop
-          muted
-          playsinline
-          class="w-64 sm:w-96 lg:w-[500px]"
-        >
-          <source src="/videos/animace-panacci.mp4" type="video/mp4" />
-        </video>
-      </div>
-
       <!-- Hero image fading into background -->
       <div class="relative mb-6 sm:mb-10 hero-image-mask">
 
@@ -135,5 +122,18 @@ import data from '../data/homepage.json';
       </a>
     </div>
   </section>
+
+  <!-- Fixní panáčci v pravém dolním rohu -->
+  <div class="fixed bottom-0 right-0 z-40 pointer-events-none" style="mask-image: radial-gradient(ellipse at 70% 70%, black 30%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 70% 70%, black 30%, transparent 70%);">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      class="w-48 sm:w-64 lg:w-80 h-auto block"
+    >
+      <source src="/videos/animace-panacci.mp4" type="video/mp4" />
+    </video>
+  </div>
 
 </Layout>
