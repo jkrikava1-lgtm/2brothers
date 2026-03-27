@@ -7,11 +7,46 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<section class="py-12 lg:py-16">
-  <div class="max-w-7xl mx-auto px-4 text-center">
-    <h1 class="text-5xl lg:text-6xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">{title}</h1>
+<section class="py-12 lg:py-16 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-center gap-0 relative">
+      <h1 class="text-5xl lg:text-6xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent text-center">
+        {title}
+      </h1>
+      <div class="panacci-container hidden lg:block">
+        <video
+          class="panacci-video"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="/videos/animace-panacci.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
     {subtitle && (
-      <p class="mt-4 text-lg text-white/60 max-w-2xl mx-auto">{subtitle}</p>
+      <p class="mt-4 text-lg text-white/60 max-w-2xl mx-auto text-center">{subtitle}</p>
     )}
   </div>
 </section>
+
+<style>
+  .panacci-container {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    flex-shrink: 0;
+    margin-left: -20px;
+  }
+
+  .panacci-video {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+</style>
