@@ -9,28 +9,28 @@ const { title, subtitle } = Astro.props;
 
 <section class="py-12 lg:py-16 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
-    <!-- Desktop: video na pozadí, nadpis překrývá levou část -->
-    <div class="hero-banner relative hidden lg:block rounded-[2rem] overflow-hidden max-w-3xl mx-auto border border-white/5 shadow-[0_0_40px_rgba(255,26,126,0.1)]">
-      <!-- Video jako pozadí celého banneru -->
-      <video
-        class="w-full h-auto block"
-        autoplay
-        loop
-        muted
-        playsinline
-      >
-        <source src="/videos/animace-panacci.mp4" type="video/mp4" />
-      </video>
-      <!-- Nadpis překrývající levou část videa -->
-      <div class="absolute inset-0 flex items-center z-10">
-        <div class="pl-10 max-w-[55%]">
-          <h1 class="text-6xl xl:text-7xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
-            {title}
-          </h1>
-          {subtitle && (
-            <p class="mt-4 text-lg text-white/70 max-w-md drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">{subtitle}</p>
-          )}
-        </div>
+    <!-- Desktop: nadpis vlevo, video s panáčky vpravo -->
+    <div class="hero-banner relative hidden lg:flex items-center rounded-[2rem] overflow-hidden border border-white/5 shadow-[0_0_40px_rgba(255,26,126,0.1)]">
+      <!-- Nadpis vlevo -->
+      <div class="relative z-10 flex-shrink-0 pl-8 py-8 max-w-[40%]">
+        <h1 class="text-6xl xl:text-7xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
+          {title}
+        </h1>
+        {subtitle && (
+          <p class="mt-4 text-lg text-white/70 max-w-md drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">{subtitle}</p>
+        )}
+      </div>
+      <!-- Video s panáčky vpravo -->
+      <div class="flex-1">
+        <video
+          class="w-full h-auto block"
+          autoplay
+          loop
+          muted
+          playsinline
+        >
+          <source src="/videos/animace-panacci.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
 
