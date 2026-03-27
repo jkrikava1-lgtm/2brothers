@@ -10,8 +10,8 @@ const { title, subtitle } = Astro.props;
 <section class="py-12 lg:py-16 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
     <!-- Desktop: video na pozadí, nadpis překrývá levou část -->
-    <div class="hero-banner relative hidden lg:block rounded-3xl overflow-hidden">
-      <!-- Video jako pozadí celého banneru -->
+    <div class="hero-banner relative hidden lg:block rounded-3xl overflow-hidden max-w-4xl mx-auto">
+      <!-- Video jako pozadí celého banneru, omezená šířka -->
       <video
         class="w-full h-auto block"
         autoplay
