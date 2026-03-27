@@ -2,9 +2,10 @@
 interface Props {
   title: string;
   subtitle?: string;
+  video?: string;
 }
 
-const { title, subtitle } = Astro.props;
+const { title, subtitle, video = '/videos/animace-panacci.mp4' } = Astro.props;
 ---
 
 <section class="py-12 lg:py-16 overflow-hidden">
@@ -29,7 +30,7 @@ const { title, subtitle } = Astro.props;
           muted
           playsinline
         >
-          <source src="/videos/animace-panacci.mp4" type="video/mp4" />
+          <source src={video} type="video/mp4" />
         </video>
       </div>
     </div>
