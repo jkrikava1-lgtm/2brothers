@@ -9,28 +9,28 @@ const { title, subtitle } = Astro.props;
 
 <section class="py-12 lg:py-16 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
-    <!-- Desktop: nadpis vlevo, panáčci vpravo v jednom velkém bloku -->
-    <div class="hero-banner relative hidden lg:flex items-center justify-between rounded-3xl overflow-hidden" style="min-height: 280px;">
-      <!-- Nadpis vlevo -->
-      <div class="relative z-10 pl-12 flex-shrink-0 max-w-[50%]">
-        <h1 class="text-5xl lg:text-6xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
-          {title}
-        </h1>
-        {subtitle && (
-          <p class="mt-4 text-lg text-white/60 max-w-xl">{subtitle}</p>
-        )}
-      </div>
-      <!-- Panáčci vpravo -->
-      <div class="relative z-10 flex-shrink-0 pr-4">
-        <video
-          class="w-[450px] h-auto"
-          autoplay
-          loop
-          muted
-          playsinline
-        >
-          <source src="/videos/animace-panacci.mp4" type="video/mp4" />
-        </video>
+    <!-- Desktop: video na pozadí, nadpis překrývá levou část -->
+    <div class="hero-banner relative hidden lg:block rounded-3xl overflow-hidden">
+      <!-- Video jako pozadí celého banneru -->
+      <video
+        class="w-full h-auto block"
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+        <source src="/videos/animace-panacci.mp4" type="video/mp4" />
+      </video>
+      <!-- Nadpis překrývající levou část videa -->
+      <div class="absolute inset-0 flex items-center z-10">
+        <div class="pl-8 lg:pl-12 max-w-[55%]">
+          <h1 class="text-5xl xl:text-6xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
+            {title}
+          </h1>
+          {subtitle && (
+            <p class="mt-4 text-lg text-white/70 max-w-xl drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">{subtitle}</p>
+          )}
+        </div>
       </div>
     </div>
 
