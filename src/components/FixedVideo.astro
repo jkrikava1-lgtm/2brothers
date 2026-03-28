@@ -1,12 +1,20 @@
 ---
 interface Props {
   video: string;
+  position?: 'right' | 'center' | 'left' | 'center-right';
 }
 
-const { video } = Astro.props;
+const { video, position = 'right' } = Astro.props;
+
+const positionStyles = {
+  right: 'right-0',
+  center: 'left-1/2 -translate-x-1/2',
+  left: 'left-0',
+  'center-right': 'right-[25%]',
+};
 ---
 
-<div class="fixed bottom-0 right-0 z-40 pointer-events-none hidden lg:block" style="mask-image: radial-gradient(ellipse 80% 90% at 55% 65%, black 30%, transparent 65%); -webkit-mask-image: radial-gradient(ellipse 80% 90% at 55% 65%, black 30%, transparent 65%);">
+<div class:list={["fixed bottom-0 z-40 pointer-events-none hidden lg:block", positionStyles[position]]} style="mask-image: radial-gradient(ellipse 80% 90% at 55% 65%, black 30%, transparent 65%); -webkit-mask-image: radial-gradient(ellipse 80% 90% at 55% 65%, black 30%, transparent 65%);">
   <video
     autoplay
     loop
