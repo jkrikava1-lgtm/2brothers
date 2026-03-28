@@ -85,6 +85,16 @@ const photos = Array.from({ length: 33 }, (_, i) => ({
 </div>
 
 <script>
+  // Pause other videos when one starts playing
+  const allVideos = document.querySelectorAll('video[controls]');
+  allVideos.forEach(video => {
+    video.addEventListener('play', () => {
+      allVideos.forEach(other => {
+        if (other !== video) (other as HTMLVideoElement).pause();
+      });
+    });
+  });
+
   const lightbox = document.getElementById('lightbox')!;
   const lbImg = document.getElementById('lb-img') as HTMLImageElement;
   const images = Array.from(document.querySelectorAll('[data-lightbox]')) as HTMLImageElement[];
