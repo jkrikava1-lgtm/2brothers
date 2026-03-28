@@ -1,0 +1,19 @@
+---
+interface Props {
+  video: string;
+}
+
+const { video } = Astro.props;
+---
+
+<div class="fixed bottom-0 right-0 z-40 pointer-events-none hidden lg:block" style="mask-image: radial-gradient(ellipse 80% 90% at 55% 65%, black 30%, transparent 65%); -webkit-mask-image: radial-gradient(ellipse 80% 90% at 55% 65%, black 30%, transparent 65%);">
+  <video
+    autoplay
+    loop
+    muted
+    playsinline
+    class="w-48 sm:w-56 lg:w-72 h-auto block"
+  >
+    <source src={video} type="video/mp4" />
+  </video>
+</div>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
+import FixedVideo from '../components/FixedVideo.astro';
 import novinky from '../data/novinky.json';
 
 function formatDate(dateStr: string) {
@@ -9,7 +10,7 @@ function formatDate(dateStr: string) {
 ---
 
 <Layout title="Novinky – 2Brothers Music Factory" description="Aktuality a nadcházející akce od 2Brothers Music Factory.">
-  <PageHero title="Novinky" subtitle="Aktuální akce a termíny" video="/videos/animace-novinky.mp4" />
+  <PageHero title="Novinky" subtitle="Aktuální akce a termíny" />
 
   <section class="py-10 lg:py-14">
     <div class="max-w-3xl mx-auto px-4">
@@ -39,4 +40,6 @@ function formatDate(dateStr: string) {
       </div>
     </div>
   </section>
+
+  <FixedVideo video="/videos/animace-novinky.mp4" />
 </Layout>
