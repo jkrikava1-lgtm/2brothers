@@ -3,26 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 
 const videos = [
-  { src: "/videos/jirka-platno.mp4", title: "Jirka s plátnem" },
-  { src: "/videos/dj-kid.mp4", title: "DJ Kid" },
-  { src: "/videos/platno-text.mp4", title: "Plátno v akci" },
-  { src: "/videos/pred-svatbou.mp4", title: "Před svatbou" },
-  { src: "/videos/svetla.mp4", title: "Světelná show" },
+  { src: "/videos/galerie-01.mp4", title: "Akce 2024" },
+  { src: "/videos/galerie-02.mp4", title: "Párty 2024" },
+  { src: "/videos/galerie-03.mp4", title: "Vánoční akce" },
+  { src: "/videos/galerie-04.mp4", title: "Akce 2025" },
+  { src: "/videos/galerie-05.mp4", title: "Svatba" },
+  { src: "/videos/galerie-06.mp4", title: "Venkovní akce" },
+  { src: "/videos/galerie-07.mp4", title: "Světelná show" },
+  { src: "/videos/galerie-08.mp4", title: "Diskotéka" },
+  { src: "/videos/galerie-09.mp4", title: "Svatba Nigérie" },
 ];
 
-const photos = [
-  { src: "/images/galerie/svatebni-areal.jpg", alt: "Svatební areál Radkyně" },
-  { src: "/images/galerie/nevesta-radkyne.jpg", alt: "Nevěsta v Radkyni" },
-  { src: "/images/galerie/svatba-radkyne.jpg", alt: "Svatba Radkyně" },
-  { src: "/images/galerie/oslava-sobotka.jpg", alt: "Oslava narozenin Sobotka" },
-  { src: "/images/galerie/oslava-rohatsko.jpg", alt: "Oslava narozenin Rohatsko" },
-  { src: "/images/galerie/hokej-na-platne.jpg", alt: "Hokejový zápas na plátně" },
-  { src: "/images/galerie/aparatura-valdice.jpg", alt: "Aparatura na oslavě Valdice" },
-  { src: "/images/galerie/vyjezdni-stan.jpg", alt: "Výjezdní stan" },
-  { src: "/images/galerie/akce-2024.jpg", alt: "Akce 2024" },
-  { src: "/images/galerie/akce-2023.jpg", alt: "Akce 2023" },
-  { src: "/images/galerie/akce-foto.jpg", alt: "Akce 2Brothers" },
-];
+const photos = Array.from({ length: 33 }, (_, i) => ({
+  src: `/images/galerie/galerie-${String(i + 1).padStart(2, '0')}.jpg`,
+  alt: `2Brothers akce ${i + 1}`,
+}));
 ---
 
 <Layout title="Galerie – 2Brothers Music Factory" description="Fotogalerie z akcí 2Brothers Music Factory.">
