@@ -2,47 +2,50 @@
 interface Props {
   title: string;
   subtitle?: string;
-  video?: string;
+  video?: string | false;
 }
 
-const { title, subtitle, video = '/videos/animace-panacci.mp4' } = Astro.props;
+const { title, subtitle, video = false } = Astro.props;
 ---
 
 <section class="py-12 lg:py-16 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
-    <!-- Desktop: nadpis vlevo, video vpravo - bez viditelného rámečku -->
-    <div class="hidden lg:flex items-center justify-center gap-0 max-w-3xl mx-auto">
-      <!-- Nadpis zarovnaný doprava, aby panáčci vybíhali zpoza něj -->
-      <div class="flex-shrink-0 pr-0 text-right" style="margin-right: -30px; position: relative; z-index: 2;">
+    {video ? (
+      <!-- Desktop: nadpis vlevo, video vpravo -->
+      <div class="hidden lg:flex items-center justify-center gap-0 max-w-3xl mx-auto">
+        <div class="flex-shrink-0 pr-0 text-right" style="margin-right: -30px; position: relative; z-index: 2;">
+          <h1 class="text-5xl xl:text-6xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
+            {title}
+          </h1>
+          {subtitle && (
+            <p class="mt-3 text-base text-white/70">{subtitle}</p>
+          )}
+        </div>
+        <div class="flex-shrink-0" style="width: 350px; margin: -30px; position: relative; z-index: 1; mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 60%);">
+          <video class="w-full h-auto block" autoplay loop muted playsinline>
+            <source src={video} type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <!-- Mobile: jen nadpis -->
+      <div class="lg:hidden text-center">
+        <h1 class="text-5xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
+          {title}
+        </h1>
+        {subtitle && (
+          <p class="mt-4 text-lg text-white/60 max-w-2xl mx-auto">{subtitle}</p>
+        )}
+      </div>
+    ) : (
+      <!-- Jen nadpis, bez videa -->
+      <div class="text-center">
         <h1 class="text-5xl xl:text-6xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
           {title}
         </h1>
         {subtitle && (
-          <p class="mt-3 text-base text-white/70">{subtitle}</p>
+          <p class="mt-4 text-lg text-white/60 max-w-2xl mx-auto">{subtitle}</p>
         )}
       </div>
-      <!-- Video s panáčky - menší velikost -->
-      <div class="flex-shrink-0" style="width: 350px; margin: -30px; position: relative; z-index: 1; mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 60%);">
-        <video
-          class="w-full h-auto block"
-          autoplay
-          loop
-          muted
-          playsinline
-        >
-          <source src={video} type="video/mp4" />
-        </video>
-      </div>
-    </div>
-
-    <!-- Mobile: jen nadpis, bez panáčků -->
-    <div class="lg:hidden text-center">
-      <h1 class="text-5xl font-display font-900 bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
-        {title}
-      </h1>
-      {subtitle && (
-        <p class="mt-4 text-lg text-white/60 max-w-2xl mx-auto">{subtitle}</p>
-      )}
-    </div>
+    )}
   </div>
 </section>
