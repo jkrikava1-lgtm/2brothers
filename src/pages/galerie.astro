@@ -25,9 +25,9 @@ const photos = Array.from({ length: 33 }, (_, i) => ({
   <PageHero title="Galerie" subtitle="Fotky a videa z našich akcí, svateb a oslav" video="/videos/animace-panacci.mp4" />
 
   <!-- Videa -->
-  <section class="py-10 lg:py-14">
+  <section class="py-6 lg:py-8">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-display text-center mb-10">Videa z akcí</h2>
+      <h2 class="text-3xl font-display text-center mb-6">Videa z akcí</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {videos.map((video, i) => (
           <div class:list={[
@@ -51,9 +51,9 @@ const photos = Array.from({ length: 33 }, (_, i) => ({
   </section>
 
   <!-- Fotky -->
-  <section class="py-10 lg:py-14">
+  <section class="py-6 lg:py-8">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-display text-center mb-10">Fotky z akcí</h2>
+      <h2 class="text-3xl font-display text-center mb-6">Fotky z akcí</h2>
       <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
         {photos.map((photo, i) => (
           <div class:list={[

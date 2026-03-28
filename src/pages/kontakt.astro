@@ -8,15 +8,15 @@ import data from '../data/kontakt.json';
 <Layout title={data.meta_title} description={data.meta_description}>
   <PageHero title={data.hero_title} subtitle={data.hero_subtitle} />
 
-  <section class="py-10 lg:py-14">
+  <section class="py-6 lg:py-8">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
         <!-- Contact info -->
         <div>
-          <h2 class="text-2xl font-display mb-8">Kontaktní údaje</h2>
+          <h2 class="text-2xl font-display mb-5">Kontaktní údaje</h2>
 
-          <div class="grid grid-cols-2 gap-6 mb-10">
+          <div class="grid grid-cols-2 gap-6 mb-6">
             {data.contacts.map((contact, i) => (
               <div class:list={[
                 'rounded-3xl border overflow-hidden',
@@ -37,7 +37,7 @@ import data from '../data/kontakt.json';
           </div>
 
           <!-- Email -->
-          <div class="flex items-center gap-4 mb-10">
+          <div class="flex items-center gap-4 mb-6">
             <div class="w-12 h-12 rounded-2xl bg-purple-400/15 flex items-center justify-center shrink-0">
               <svg class="w-5 h-5 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -68,7 +68,7 @@ import data from '../data/kontakt.json';
 
         <!-- Contact form -->
         <div>
-          <h2 class="text-2xl font-display mb-8">{data.form_headline}</h2>
+          <h2 class="text-2xl font-display mb-5">{data.form_headline}</h2>
           <form id="contact-form" class="space-y-5" method="POST" action="/api/kontakt">
             <div>
               <label for="name" class="block text-sm text-white/50 mb-1.5">{data.form_fields.name}</label>
