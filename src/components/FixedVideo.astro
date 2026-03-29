@@ -28,14 +28,36 @@ const positionStyles = {
 </div>
 
 {position === 'moving' && (
-  <style>
-    .video-moving {
-      animation: slideLeftRight 32s ease-in-out infinite;
+  <script>
+    const movingVideo = document.querySelector('.video-moving') as HTMLElement;
+    if (movingVideo) {
+      let x = Math.random() * (window.innerWidth - 288);
+      let y = Math.random() * (window.innerHeight - 200);
+      let dx = (Math.random() * 0.4 + 0.3) * (Math.random() > 0.5 ? 1 : -1);
+      let dy = (Math.random() * 0.3 + 0.2) * (Math.random() > 0.5 ? 1 : -1);
+      const w = 288;
+      const h = 200;
+
+      movingVideo.style.left = x + 'px';
+      movingVideo.style.top = y + 'px';
+      movingVideo.style.bottom = 'auto';
+
+      function animate() {
+        x += dx;
+        y += dy;
+
+        if (x <= 0 || x >= window.innerWidth - w) dx = -dx;
+        if (y <= 0 || y >= window.innerHeight - h) dy = -dy;
+
+        x = Math.max(0, Math.min(x, window.innerWidth - w));
+        y = Math.max(0, Math.min(y, window.innerHeight - h));
+
+        movingVideo.style.left = x + 'px';
+        movingVideo.style.top = y + 'px';
+
+        requestAnimationFrame(animate);
+      }
+      animate();
     }
-    @keyframes slideLeftRight {
-      0% { left: 0; }
-      50% { left: calc(100vw - 288px); }
-      100% { left: 0; }
-    }
-  </style>
+  </script>
 )}
