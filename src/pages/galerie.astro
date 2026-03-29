@@ -15,8 +15,8 @@ const videos = [
   { src: "/videos/galerie-10.mp4", title: "Akce" },
 ];
 
-const photos = Array.from({ length: 28 }, (_, i) => ({
-  src: `/images/galerie/galerie-${String(i + 1).padStart(2, '0')}.jpg`,
+const photos = Array.from({ length: 27 }, (_, i) => ({
+  src: `/images/galerie/galerie-${String(i + 1).padStart(2, '0')}.${i === 17 ? 'gif' : 'jpg'}`,
   alt: `2Brothers akce ${i + 1}`,
 }));
 ---
