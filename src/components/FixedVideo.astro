@@ -44,14 +44,18 @@ const positionStyles = {
       movingVideo.style.top = y + 'px';
       movingVideo.style.bottom = 'auto';
 
-      // Keep video playing on mobile
+      // Smooth loop on mobile - restart before end to avoid seek gap
       const vid = movingVideo.querySelector('video') as HTMLVideoElement;
       if (vid) {
+        vid.removeAttribute('loop');
+        vid.addEventListener('timeupdate', () => {
+          if (vid.duration && vid.currentTime > vid.duration - 0.15) {
+            vid.currentTime = 0;
+            vid.play();
+          }
+        });
         document.addEventListener('visibilitychange', () => {
           if (!document.hidden) vid.play();
-        });
-        vid.addEventListener('pause', () => {
-          setTimeout(() => { if (vid.paused) vid.play(); }, 100);
         });
       }
 
