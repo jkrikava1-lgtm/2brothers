@@ -178,6 +178,10 @@ const currentPath = Astro.url.pathname;
 
   <script>
     // Cookie consent
+    if (window.location.search.includes('reset-cookies')) {
+      localStorage.removeItem('cookies-accepted');
+      window.location.href = window.location.pathname;
+    }
     const banner = document.getElementById('cookie-banner');
     if (!localStorage.getItem('cookies-accepted')) {
       banner!.style.display = 'block';
