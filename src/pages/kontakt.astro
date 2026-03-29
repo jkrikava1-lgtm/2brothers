@@ -145,9 +145,19 @@ import data from '../data/kontakt.json';
     error?.classList.add('hidden');
 
     try {
-      const res = await fetch('/api/kontakt', {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: new FormData(form),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '23cd79bf-496a-4dd3-9e62-10dae4c79dbb',
+          subject: `Poptávka: ${data.name} — ${data.event_type || 'Obecná'}`,
+          from_name: data.name,
+          replyto: data.email,
+          ...data,
+        }),
       });
 
       if (res.ok) {
