@@ -1,7 +1,7 @@
 ---
 interface Props {
   video: string;
-  position?: 'right' | 'center' | 'left' | 'center-right';
+  position?: 'right' | 'center' | 'left' | 'center-right' | 'moving';
 }
 
 const { video, position = 'right' } = Astro.props;
@@ -11,6 +11,7 @@ const positionStyles = {
   center: 'left-1/2 -translate-x-1/2',
   left: 'left-0',
   'center-right': 'right-[25%]',
+  moving: 'video-moving',
 };
 ---
 
@@ -25,3 +26,16 @@ const positionStyles = {
     <source src={video} type="video/mp4" />
   </video>
 </div>
+
+{position === 'moving' && (
+  <style>
+    .video-moving {
+      animation: slideLeftRight 12s ease-in-out infinite;
+    }
+    @keyframes slideLeftRight {
+      0% { left: 0; }
+      50% { left: calc(100vw - 288px); }
+      100% { left: 0; }
+    }
+  </style>
+)}
