@@ -15,35 +15,26 @@ export async function POST({ request }: { request: Request }) {
       return new Response(JSON.stringify({ error: 'Jméno a e-mail jsou povinné.' }), { status: 400 });
     }
 
-    const resendKey = import.meta.env.RESEND_API_KEY;
-
-    const body = [
-      `Jméno: ${name}`,
-      `E-mail: ${email}`,
-      phone ? `Telefon: ${phone}` : null,
-      eventType ? `Typ akce: ${eventType}` : null,
-      eventDate ? `Termín: ${eventDate}` : null,
-      message ? `\nZpráva:\n${message}` : null,
-    ].filter(Boolean).join('\n');
-
-    const res = await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${resendKey}`,
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: 'web@2brothers.cz',
-        to: '2brothers@2brothers.cz',
-        reply_to: email,
+        access_key: '23cd79bf-496a-4dd3-9e62-10dae4c79dbb',
         subject: `Poptávka: ${name} — ${eventType || 'Obecná'}`,
-        text: body,
+        from_name: name,
+        replyto: email,
+        name,
+        email,
+        phone: phone || '—',
+        typ_akce: eventType || '—',
+        termin: eventDate || '—',
+        zprava: message || '—',
       }),
     });
 
     if (!res.ok) {
       const err = await res.text();
-      console.error('Resend error:', err);
+      console.error('Web3Forms error:', err);
       return new Response(JSON.stringify({ error: 'Chyba při odesílání.' }), { status: 500 });
     }
 
