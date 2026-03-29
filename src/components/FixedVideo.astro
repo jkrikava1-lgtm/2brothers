@@ -15,7 +15,7 @@ const positionStyles = {
 };
 ---
 
-<div class:list={["fixed bottom-0 z-40 pointer-events-none hidden lg:block", positionStyles[position]]} style="mask-image: radial-gradient(ellipse 70% 75% at 50% 50%, black 20%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 50%, black 20%, transparent 60%);">
+<div class:list={["fixed bottom-0 z-40 pointer-events-none", positionStyles[position]]} style="mask-image: radial-gradient(ellipse 70% 75% at 50% 50%, black 20%, transparent 60%); -webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 50%, black 20%, transparent 60%);">
   <video
     autoplay
     loop
@@ -32,12 +32,13 @@ const positionStyles = {
     const movingVideo = document.querySelector('.video-moving') as HTMLElement;
     if (movingVideo) {
       let x = Math.random() * (window.innerWidth - 288);
-      const topLimit = 200; // pod záhlavím
-      let y = topLimit + Math.random() * (window.innerHeight - 200 - topLimit);
+      const isMobile = window.innerWidth < 1024;
+      const topLimit = isMobile ? 80 : 200;
+      const w = isMobile ? 192 : 288;
+      const h = isMobile ? 140 : 200;
+      let y = topLimit + Math.random() * (window.innerHeight - h - topLimit);
       let dx = (Math.random() * 0.4 + 0.3) * (Math.random() > 0.5 ? 1 : -1);
       let dy = (Math.random() * 0.3 + 0.2) * (Math.random() > 0.5 ? 1 : -1);
-      const w = 288;
-      const h = 200;
 
       movingVideo.style.left = x + 'px';
       movingVideo.style.top = y + 'px';
