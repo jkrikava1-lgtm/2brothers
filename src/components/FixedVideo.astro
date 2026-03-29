@@ -44,6 +44,17 @@ const positionStyles = {
       movingVideo.style.top = y + 'px';
       movingVideo.style.bottom = 'auto';
 
+      // Keep video playing on mobile
+      const vid = movingVideo.querySelector('video') as HTMLVideoElement;
+      if (vid) {
+        document.addEventListener('visibilitychange', () => {
+          if (!document.hidden) vid.play();
+        });
+        vid.addEventListener('pause', () => {
+          setTimeout(() => { if (vid.paused) vid.play(); }, 100);
+        });
+      }
+
       function animate() {
         x += dx;
         y += dy;
