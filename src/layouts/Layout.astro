@@ -22,6 +22,19 @@ const currentPath = Astro.url.pathname;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/favicon.png" />
+  <!-- Google Analytics - loaded only after cookie consent -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    if (localStorage.getItem('cookies-accepted') === 'true') {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH3GQ8KLXL';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-WH3GQ8KLXL');
+    }
+  </script>
 </head>
 <body class="min-h-screen flex flex-col relative overflow-x-hidden">
 
@@ -151,6 +164,42 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
   </footer>
+
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 p-4 bg-night-950/95 backdrop-blur-xl border-t border-white/10" style="display:none;">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-4 text-sm">
+      <p class="text-white/60 text-center sm:text-left">Používáme cookies pro analýzu návštěvnosti. Žádné reklamní cookies nepoužíváme.</p>
+      <div class="flex gap-3 shrink-0">
+        <button id="cookie-reject" class="px-4 py-2 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all text-sm">Odmítnout</button>
+        <button id="cookie-accept" class="px-4 py-2 rounded-full bg-pink-500 hover:bg-pink-400 text-white font-bold transition-all text-sm">Přijmout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cookie consent
+    const banner = document.getElementById('cookie-banner');
+    if (!localStorage.getItem('cookies-accepted')) {
+      banner!.style.display = 'block';
+    }
+    document.getElementById('cookie-accept')?.addEventListener('click', () => {
+      localStorage.setItem('cookies-accepted', 'true');
+      banner!.style.display = 'none';
+      // Load GA
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-WH3GQ8KLXL';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(...args: any[]){window.dataLayer.push(args);}
+      gtag('js', new Date());
+      gtag('config', 'G-WH3GQ8KLXL');
+    });
+    document.getElementById('cookie-reject')?.addEventListener('click', () => {
+      localStorage.setItem('cookies-accepted', 'false');
+      banner!.style.display = 'none';
+    });
+  </script>
 
   <script>
     const toggle = document.getElementById('mobile-toggle');
