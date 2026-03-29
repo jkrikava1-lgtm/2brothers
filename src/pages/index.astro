@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FixedVideo from '../components/FixedVideo.astro';
 import data from '../data/homepage.json';
 ---
 
@@ -123,17 +124,6 @@ import data from '../data/homepage.json';
     </div>
   </section>
 
-  <!-- Fixní panáčci v pravém dolním rohu -->
-  <div class="fixed bottom-0 right-0 z-40 pointer-events-none" style="mask-image: radial-gradient(ellipse 80% 90% at 55% 65%, black 30%, transparent 65%); -webkit-mask-image: radial-gradient(ellipse 80% 90% at 55% 65%, black 30%, transparent 65%);">
-    <video
-      autoplay
-      loop
-      muted
-      playsinline
-      class="w-48 sm:w-56 lg:w-72 h-auto block"
-    >
-      <source src="/videos/animace-hp.mp4" type="video/mp4" />
-    </video>
-  </div>
+  <FixedVideo video="/videos/animace-hp.mp4" position="moving" />
 
 </Layout>
