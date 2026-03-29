@@ -32,7 +32,8 @@ const positionStyles = {
     const movingVideo = document.querySelector('.video-moving') as HTMLElement;
     if (movingVideo) {
       let x = Math.random() * (window.innerWidth - 288);
-      let y = Math.random() * (window.innerHeight - 200);
+      const topLimit = 200; // pod záhlavím
+      let y = topLimit + Math.random() * (window.innerHeight - 200 - topLimit);
       let dx = (Math.random() * 0.4 + 0.3) * (Math.random() > 0.5 ? 1 : -1);
       let dy = (Math.random() * 0.3 + 0.2) * (Math.random() > 0.5 ? 1 : -1);
       const w = 288;
@@ -47,10 +48,10 @@ const positionStyles = {
         y += dy;
 
         if (x <= 0 || x >= window.innerWidth - w) dx = -dx;
-        if (y <= 0 || y >= window.innerHeight - h) dy = -dy;
+        if (y <= topLimit || y >= window.innerHeight - h) dy = -dy;
 
         x = Math.max(0, Math.min(x, window.innerWidth - w));
-        y = Math.max(0, Math.min(y, window.innerHeight - h));
+        y = Math.max(topLimit, Math.min(y, window.innerHeight - h));
 
         movingVideo.style.left = x + 'px';
         movingVideo.style.top = y + 'px';
