@@ -36,14 +36,22 @@ const photos = Array.from({ length: 33 }, (_, i) => ({
             i % 3 === 1 && 'border-cyan-400/20',
             i % 3 === 2 && 'border-purple-400/20',
           ]}>
-            <video
-              class="w-full aspect-[9/16] object-cover"
-              src={video.src}
-              poster=""
-              controls
-              preload="metadata"
-              playsinline
-            />
+            <div class="relative cursor-pointer group" data-video-src={video.src}>
+              <video
+                class="w-full aspect-[9/16] object-cover"
+                src={`${video.src}#t=0.5`}
+                preload="metadata"
+                playsinline
+                muted
+              />
+              <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -85,13 +93,35 @@ const photos = Array.from({ length: 33 }, (_, i) => ({
 </div>
 
 <script>
-  // Pause other videos when one starts playing
-  const allVideos = document.querySelectorAll('video[controls]');
-  allVideos.forEach(video => {
-    video.addEventListener('play', () => {
-      allVideos.forEach(other => {
-        if (other !== video) (other as HTMLVideoElement).pause();
+  // Click to load and play video, pause others
+  document.querySelectorAll('[data-video-src]').forEach(container => {
+    container.addEventListener('click', () => {
+      const video = container.querySelector('video') as HTMLVideoElement;
+      const overlay = container.querySelector('.absolute');
+
+      // Pause all other videos and restore their overlays
+      document.querySelectorAll('[data-video-src]').forEach(other => {
+        if (other === container) return;
+        const otherVideo = other.querySelector('video') as HTMLVideoElement;
+        if (otherVideo.controls) {
+          otherVideo.pause();
+          otherVideo.controls = false;
+          otherVideo.muted = true;
+          if (!other.querySelector('.absolute')) {
+            const newOverlay = document.createElement('div');
+            newOverlay.className = 'absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors';
+            newOverlay.innerHTML = '<div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform"><svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg></div>';
+            other.appendChild(newOverlay);
+          }
+        }
       });
+
+      // Activate this video
+      if (overlay) overlay.remove();
+      video.src = container.getAttribute('data-video-src')!;
+      video.controls = true;
+      video.muted = false;
+      video.play();
     });
   });
 
