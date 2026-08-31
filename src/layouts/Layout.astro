@@ -184,7 +184,10 @@ const currentPath = Astro.url.pathname;
   <div id="cookie-modal" class="fixed inset-0 z-[200] hidden">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
     <div class="absolute bottom-0 left-0 right-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:max-w-lg bg-night-950 border border-white/10 sm:rounded-xl shadow-2xl p-6">
-      <h3 class="text-xl font-bold text-white mb-1">Nastavení cookies</h3>
+      <div class="flex items-start justify-between mb-1">
+        <h3 class="text-xl font-bold text-white">Nastavení cookies</h3>
+        <span class="text-xs text-white/30 pt-1.5"><span id="active-count">2</span> z 2 aktivní</span>
+      </div>
       <p class="text-sm text-white/50 mb-6">Vyberte, které cookies povolíte. Nezbytné jsou vždy aktivní.</p>
       <div class="space-y-4 mb-6">
         <div class="flex items-start justify-between gap-4 py-3 border-b border-white/10">
@@ -197,9 +200,10 @@ const currentPath = Astro.url.pathname;
           </div>
         </div>
         <div class="flex items-start justify-between gap-4 py-3">
-          <div>
+          <div class="flex-1">
             <p class="text-sm font-semibold text-white/80">Analytické <span class="text-xs text-pink-400 font-normal ml-1">(doporučeno)</span></p>
             <p class="text-xs text-white/30 mt-0.5">Google Analytics — pomáhají nám zlepšovat web.</p>
+            <p id="analytics-warning" class="hidden text-xs text-amber-400/80 mt-1.5">Bez analytiky nemůžeme sledovat, co vám chybí, a web zlepšovat pro vás.</p>
           </div>
           <button id="toggle-analytics" role="switch" aria-checked="true"
             class="flex-shrink-0 w-10 h-6 rounded-full transition-colors duration-200 bg-pink-500 relative mt-0.5">
@@ -207,9 +211,18 @@ const currentPath = Astro.url.pathname;
           </button>
         </div>
       </div>
-      <div class="flex gap-3">
-        <button id="cookie-save" class="flex-1 py-2.5 text-sm font-bold text-white bg-pink-500 hover:bg-pink-400 rounded-full transition-colors">Uložit nastavení</button>
-        <button id="cookie-accept-all" class="flex-1 py-2.5 text-sm font-semibold text-white/70 bg-white/10 hover:bg-white/20 rounded-full transition-colors">Přijmout vše</button>
+      <div id="normal-buttons">
+        <div class="flex gap-3">
+          <button id="cookie-save" class="flex-1 py-2.5 text-sm font-bold text-white bg-pink-500 hover:bg-pink-400 rounded-full transition-all">Uložit nastavení</button>
+          <button id="cookie-accept-all" class="flex-1 py-2.5 text-sm font-semibold text-white/70 bg-white/10 hover:bg-white/20 rounded-full transition-colors">Přijmout vše</button>
+        </div>
+      </div>
+      <div id="confirm-area" class="hidden">
+        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+          <p class="text-sm text-white/60 text-center mb-3">Opravdu chcete omezit naše možnosti zlepšování webu?</p>
+          <button id="confirm-accept" class="w-full py-2.5 text-sm font-bold text-white bg-pink-500 hover:bg-pink-400 rounded-full transition-colors mb-2">Přijmout doporučené cookies</button>
+          <button id="confirm-reject" class="w-full py-1.5 text-xs text-white/25 hover:text-white/40 transition-colors">Pokračovat bez analytiky</button>
+        </div>
       </div>
     </div>
   </div>
@@ -222,6 +235,7 @@ const currentPath = Astro.url.pathname;
         return;
       }
       var analyticsOn = true;
+      var confirmStep = false;
       var banner = document.getElementById('cookie-banner');
       if (!localStorage.getItem('cookies-accepted')) { banner.style.display = 'block'; }
 
@@ -251,16 +265,49 @@ const currentPath = Astro.url.pathname;
       });
       document.getElementById('toggle-analytics')?.addEventListener('click', function() {
         analyticsOn = !analyticsOn;
+        confirmStep = false;
         this.classList.toggle('bg-pink-500', analyticsOn);
         this.classList.toggle('bg-white/20', !analyticsOn);
         var k = document.getElementById('toggle-knob');
         k.classList.toggle('right-1', analyticsOn);
         k.classList.toggle('left-1', !analyticsOn);
+        this.setAttribute('aria-checked', String(analyticsOn));
+        var cnt = document.getElementById('active-count');
+        if (cnt) cnt.textContent = analyticsOn ? '2' : '1';
+        var warn = document.getElementById('analytics-warning');
+        if (warn) warn.classList.toggle('hidden', analyticsOn);
+        var saveBtn = document.getElementById('cookie-save');
+        if (saveBtn) {
+          if (analyticsOn) {
+            saveBtn.textContent = 'Uložit nastavení';
+            saveBtn.className = 'flex-1 py-2.5 text-sm font-bold text-white bg-pink-500 hover:bg-pink-400 rounded-full transition-all';
+          } else {
+            saveBtn.textContent = 'Uložit bez doporučených';
+            saveBtn.className = 'flex-1 py-2.5 text-sm font-semibold text-white/30 bg-white/10 rounded-full transition-all';
+          }
+        }
+        document.getElementById('confirm-area').classList.add('hidden');
+        document.getElementById('normal-buttons').classList.remove('hidden');
       });
       document.getElementById('cookie-save')?.addEventListener('click', function() {
-        localStorage.setItem('cookies-accepted', analyticsOn ? 'true' : 'false');
+        if (analyticsOn) {
+          localStorage.setItem('cookies-accepted', 'true');
+          hideBanner(); loadGA();
+          return;
+        }
+        if (!confirmStep) {
+          confirmStep = true;
+          document.getElementById('normal-buttons').classList.add('hidden');
+          document.getElementById('confirm-area').classList.remove('hidden');
+        }
+      });
+      document.getElementById('confirm-accept')?.addEventListener('click', function() {
+        localStorage.setItem('cookies-accepted', 'true');
+        hideBanner(); loadGA();
+      });
+      document.getElementById('confirm-reject')?.addEventListener('click', function() {
+        localStorage.setItem('cookies-accepted', 'false');
         hideBanner();
-        if (analyticsOn) loadGA();
       });
       document.getElementById('cookie-modal')?.addEventListener('click', function(e) {
         if (e.target === this || e.target === this.firstElementChild) hideBanner();
